@@ -6,6 +6,7 @@
   "homepage": "",
   "dependencies": {
     "angular": "^1.7.5",
-    "semantic": "^2.4.0"
+    "semantic": "^2.4.0",
+    "jquery": "^3.3.1"
   }
 }
