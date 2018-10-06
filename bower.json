@@ -1,0 +1,11 @@
+{
+  "name": "liveball",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "angular": "^1.7.5",
+    "semantic": "^2.4.0"
+  }
+}
