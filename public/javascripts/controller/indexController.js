@@ -55,6 +55,13 @@ app.controller('indexController',['$scope','indexFactory',($scope,indexFactory)=
 				$('#'+data.socketId).animate({'left':data.x,'top':data.y});
 			});
 
+			socket.on('newMessage',(messagedata)=>{
+				$scope.messages.push(messagedata.messagedata);
+				console.log($scope.messages)
+				$scope.$apply();
+			});	
+
+
 			let animate = false;
 			$scope.onClickPlayer = ($event) => {
 				if(!animate){
@@ -69,6 +76,24 @@ app.controller('indexController',['$scope','indexFactory',($scope,indexFactory)=
 					animate = false;
 				}
 			};
+
+			$scope.newMessage = () => {
+				if($scope.message){
+					let message = $scope.message;
+
+					const messageData = {
+						type:{
+							code:1
+						},
+						text: message,
+						username: username
+					};
+
+					$scope.messages.push(messageData);
+					socket.emit('newMessage',messageData);
+					$scope.message = "";
+				}
+			}
 		}).catch((err)=>{
 			console.log(err);
 		});

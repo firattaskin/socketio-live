@@ -30,7 +30,7 @@ io.on('connection',(socket)=> {
 		socket.broadcast.emit('disUser',users[socket.id]);
 		delete users[socket.id];
 	});
-
+	
 	socket.on('animate',(data)=>{
 		users[socket.id].position.x = data.x;
 		users[socket.id].position.y = data.y;
@@ -39,6 +39,10 @@ io.on('connection',(socket)=> {
 			x:data.x,
 			y:data.y
 		});
+	});
+
+	socket.on('newMessage',(messagedata)=>{
+		socket.broadcast.emit('newMessage',{messagedata});
 	});
 });
 
