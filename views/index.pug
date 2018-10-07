@@ -14,8 +14,8 @@ block content
                         .relative
                             span.name {{player.username}}
                             //.message
-                .ui.items.chat
-                    .item(ng-repeat="message in messages.slice().reverse()")
+                .ui.items.chat#chat-area
+                    .item(ng-repeat="message in messages")
                         .content(ng-if="!message.type.code")
                             span [SERVER]
                             a.header.name {{message.username}} &nbsp;

@@ -59,6 +59,10 @@ app.controller('indexController',['$scope','indexFactory',($scope,indexFactory)=
 				$scope.messages.push(messagedata.messagedata);
 				console.log($scope.messages)
 				$scope.$apply();
+				setTimeout(()=>{
+					const element = document.getElementById('chat-area');
+					element.scrollTop = element.scrollHeight;
+				});
 			});	
 
 
@@ -92,6 +96,10 @@ app.controller('indexController',['$scope','indexFactory',($scope,indexFactory)=
 					$scope.messages.push(messageData);
 					socket.emit('newMessage',messageData);
 					$scope.message = "";
+					setTimeout(()=>{
+						const element = document.getElementById('chat-area');
+						element.scrollTop = element.scrollHeight;
+					});
 				}
 			}
 		}).catch((err)=>{
